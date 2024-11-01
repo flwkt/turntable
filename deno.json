@@ -1,10 +1,21 @@
 {
   "name": "@flwkt/turntable",
   "version": "0.1.0",
+  "description": "Create a turntable view from your GLB/GLTF model",
   "exports": "./demo/src/turntable.ts",
-  "tasks": {},
-  "imports": {},
+  "license": "MIT",
+  "tasks": {
+    "build:npm": "deno run -A scripts/build_npm.ts",
+    "publish:npm": "cd npm && npm publish --access public",
+    "publish": "deno task build:npm && deno task publish:npm"
+  },
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@0.41.3"
+  },
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"]
+  },
+  "publish": {
+    "include": ["LICENSE", "README.md", "demo/src/turntable.ts"]
   }
 }
