@@ -1,0 +1,10 @@
+{
+  "name": "@flwkt/turntable",
+  "version": "0.1.0",
+  "exports": "./demo/src/turntable.ts",
+  "tasks": {},
+  "imports": {},
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"]
+  }
+}
