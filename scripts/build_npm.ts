@@ -5,7 +5,9 @@ import { build, emptyDir } from '@deno/dnt';
 await emptyDir('./npm');
 
 await build({
-  entryPoints: ['./demo/src/turntable.ts'],
+  entryPoints: [
+    './demo/src/autoinit.ts',
+  ],
   outDir: './npm',
   compilerOptions: {
     lib: ['DOM', 'DOM.Iterable', 'ESNext'],
