@@ -64,6 +64,36 @@ export default class Turntable {
     images[index]?.classList.add('active');
   }
 
+  private addObserver(divElement: HTMLDivElement): void {
+    const file: string | null = divElement.getAttribute('data-turntable-file');
+    if (!file) return;
+    // Create a MutationObserver to watch for attribute changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === 'attributes' &&
+          mutation.attributeName === 'data-turntable-file'
+        ) {
+          const newFile = divElement.getAttribute('data-turntable-file');
+          if (newFile && newFile !== file) {
+            // Remove existing images
+            const existingUl = divElement.querySelector('ul');
+            if (existingUl) {
+              existingUl.remove();
+            }
+            // Reinitialize with new file
+            this.init(divElement);
+          }
+        }
+      });
+    });
+
+    observer.observe(divElement, {
+      attributes: true,
+      attributeFilter: ['data-turntable-file'],
+    });
+  }
+
   private createImages(
     divElement: HTMLDivElement,
     imageCount: number,
@@ -125,6 +155,9 @@ export default class Turntable {
     if (!divElement.style.height) {
       divElement.style.height = `${divElement.clientWidth}px`;
     }
+
+    // Add observer
+    this.addObserver(divElement);
 
     // Create images
     this.createImages(divElement, imageCount, angleStep, file);
