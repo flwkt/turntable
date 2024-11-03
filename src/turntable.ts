@@ -1,6 +1,4 @@
 export default class Turntable {
-  private turntableElements: HTMLDivElement[] = [];
-
   private getImageSize(divElement: HTMLDivElement): number {
     let width = divElement.offsetWidth;
 
@@ -164,8 +162,4 @@ export default class Turntable {
       this.init(divElement);
     });
   }
-}
-
-if ((window as any) && !(window as any).Turntable) {
-  (window as any).Turntable = new Turntable();
 }
