@@ -1,23 +1,14 @@
+// tsconfig.json
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "CommonJS",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "outDir": "./npm",
-
-    /* Bundler mode */
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "declaration": true,
-
-    /* Linting */
+    "target": "es6",
+    "module": "esnext",
+    "declaration": true,     // Generate declaration files
+    "outDir": "npm",        // Rollup output directory
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "esModuleInterop": true,
+    "importHelpers": true    // Use tslib for helper functions
   },
-  "include": ["src/turntable.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

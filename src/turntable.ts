@@ -94,7 +94,7 @@ export default class Turntable {
     }
   }
 
-  private init(divElement: HTMLDivElement): void {
+  public init(divElement: HTMLDivElement): void {
     // Check if divElement already has a ul element
     if (divElement.querySelector('ul')) return;
 
