@@ -1,6 +1,6 @@
 {
   "name": "@flwkt/turntable",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "Create a turntable view from your GLB/GLTF model",
   "type": "module",
   "license": "MIT",
