@@ -1,6 +1,6 @@
 {
   "name": "@flwkt/turntable",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Create a turntable view from your GLB/GLTF model",
   "type": "module",
   "license": "MIT",
@@ -8,7 +8,10 @@
   "module": "npm/turntable.esm.js",
   "types": "npm/turntable.d.ts",
   "files": [
-    "npm"
+    "npm",
+    "LICENSE",
+    "README.md",
+    "package.json"
   ],
   "keywords": [
     "3d",
