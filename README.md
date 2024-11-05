@@ -3,7 +3,7 @@
 Create a turntable view from your GLB/GLTF model.
 
 <p align="center">
-  <img src="files/turntable.png" alt="Turntable">
+  <img src="files/turntable.gif" alt="Turntable">
 </p>
 
  powered by [Flowkit's GLB 2 PNG](https://www.flowkit.app/glb2png)
