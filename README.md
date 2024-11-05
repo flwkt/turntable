@@ -59,6 +59,12 @@ The URL of the GLB/GLTF file to load.
 
 The number of images to generate from the GLB/GLTF file.
 
+For example, if you set `data-turntable-count="14"` then the 360° view will be split into 14 images.
+
+It's recommended to set `data-turntable-count` as small as posiible because all images need to be loaded on your users device.
+
+Currently the maximum is 20 images.
+
 ### `data-turntable-scroll`
 
 if `true` the turntable will rotate automatically when the user scrolls and the image is in the viewport.

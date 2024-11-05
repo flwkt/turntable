@@ -136,18 +136,12 @@ export default class Turntable {
     const settingCount: string | null = divElement.getAttribute(
       'data-turntable-count'
     );
-    const settingStep: string | null = divElement.getAttribute(
-      'data-turntable-step'
-    );
 
     let imageCount: number = 10;
     let angleStep: number = 360 / imageCount;
-    if (settingCount && !settingStep) {
-      imageCount = parseInt(settingCount);
+    if (settingCount) {
+      imageCount = Math.min(20, parseInt(settingCount));
       angleStep = 360 / imageCount;
-    } else if (settingStep && !settingCount) {
-      angleStep = parseInt(settingStep);
-      imageCount = 360 / angleStep;
     }
 
     // Setup divElement
