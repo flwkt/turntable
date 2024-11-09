@@ -49,6 +49,12 @@ const turntable = new Turntable();
 turntable.init(document.querySelector('#your-div'));
 ```
 
+## Protect your assets
+
+You can use the `data-turntable-short` attribute to hide the actual path to your GLB/GLTF file to hide your 3D assets from the public.
+
+See [data-turntable-short](#data-turntable-short) in the settings section below for more information.
+
 ## Settings
 
 ### `data-turntable-file`
@@ -75,3 +81,24 @@ if `true` the images will be loaded lazily.
 
 This is a beta feature right now and leads to flickering.
 
+
+### `data-turntable-rv`
+
+The vertical rotation of the images. Example: 
+- `0` means the camera looks straight at the model.
+- `90` means the camera looks at the model from the top.
+- `-90` means the camera looks at the model from the bottom.
+
+default is `15`.
+
+### `data-turntable-short`
+
+The short URL of the GLB/GLTF file to load.
+
+This can be used to hide the actual path to your GLB/GLTF file to hide your assets from the public.
+
+You can get the short URL from the API response of `https://www.flowkit.app/api/short?url=URL_TO_YOUR_GLB_OR_GLTF_FILE`.
+
+For example:
+
+https://www.flowkit.app/api/short?url=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/Suzanne/glTF/Suzanne.gltf
