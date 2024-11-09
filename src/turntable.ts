@@ -98,20 +98,29 @@ export default class Turntable {
     divElement: HTMLDivElement,
     imageCount: number,
     angleStep: number,
-    file: string
+    file: string | null,
+    short: string | null
   ): void {
     const ul: HTMLUListElement = divElement.appendChild(
       document.createElement('ul')
     );
+    const rvAttribute: string | null =
+      divElement.getAttribute('data-turntable-rv');
+    const rotationVertical: number = parseInt(rvAttribute || '15');
+
     for (let i: number = 0; i < imageCount; i++) {
       const li: HTMLLIElement = ul.appendChild(document.createElement('li'));
       if (i === Math.floor(imageCount / 2)) li.classList.add('active');
 
       const size: number = this.getImageSize(divElement);
       const angle: number = -180 + i * angleStep;
-      const url: string = `https://www.flowkit.app/s/demo/r/rh:${angle},rv:15,s:${size}/u/${encodeURIComponent(
-        file
-      )}`;
+      let url: string = `https://www.flowkit.app/s/demo/r/rh:${angle},rv:${rotationVertical},s:${size}`;
+      if (file) {
+        url += `/u/${encodeURIComponent(file)}`;
+      }
+      if (short) {
+        url += `/short/${short}`;
+      }
 
       const img: HTMLImageElement = li.appendChild(
         document.createElement('img')
@@ -131,7 +140,10 @@ export default class Turntable {
     this.createStyleElement();
 
     const file: string | null = divElement.getAttribute('data-turntable-file');
-    if (!file) return;
+    const short: string | null = divElement.getAttribute(
+      'data-turntable-short'
+    );
+    if (!file && !short) return;
 
     const settingCount: string | null = divElement.getAttribute(
       'data-turntable-count'
@@ -154,7 +166,7 @@ export default class Turntable {
     this.addObserver(divElement);
 
     // Create images
-    this.createImages(divElement, imageCount, angleStep, file);
+    this.createImages(divElement, imageCount, angleStep, file, short);
 
     // Add interaction
     this.addInteraction(divElement);
@@ -181,8 +193,11 @@ export default class Turntable {
   }
 
   public initAll(): void {
-    const divElements: NodeListOf<HTMLDivElement> =
+    const fileDivElements: NodeListOf<HTMLDivElement> =
       document.querySelectorAll<HTMLDivElement>('[data-turntable-file]');
+    const shortDivElements: NodeListOf<HTMLDivElement> =
+      document.querySelectorAll<HTMLDivElement>('[data-turntable-short]');
+    const divElements = [...fileDivElements, ...shortDivElements];
     if (!divElements.length) return;
 
     divElements.forEach((divElement: HTMLDivElement) => {
